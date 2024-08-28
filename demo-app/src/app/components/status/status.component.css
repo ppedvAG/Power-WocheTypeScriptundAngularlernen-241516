@@ -1,0 +1,10 @@
+.status {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: aliceblue;
+    height: 2em;
+    text-align: center;
+    padding: .3em;
+}

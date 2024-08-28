@@ -1,0 +1,25 @@
+@for (i of orderService.tables; track i) {
+
+<button (click)="setTable(i)">Tisch # {{ i }}</button>
+} @if (currentTable !== 0) {
+<div class="table">
+  <ul>
+    @for (title of getTitles(); track $index) {
+    <li>
+      {{ title }}
+    </li>
+    }
+  </ul>
+  <p>Zu zahlen: {{ getPrice() }}</p>
+  <button (click)="payBill()">Bezahlen</button>
+
+  <p>Bewerten Sie Ihr Menü</p>
+  <app-rating
+    [rating]="3"
+    (ratingChanged)="updateStatus($event, 'Rating')"
+  ></app-rating>
+</div>
+
+} @else {
+<p>Kein Tisch ausgewählt</p>
+}

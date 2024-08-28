@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { Dish } from '../../models/dish.model';
+import { ProductService } from '../../services/product.service';
+import { MessageService } from '../../services/message.service';
+import { OrderService } from '../../services/order.service';
+import { OrderEventArg } from '../card/card.component';
 
 @Component({
   selector: 'app-overview',
@@ -7,38 +11,20 @@ import { Dish } from '../../models/dish.model';
   styleUrl: './overview.component.css',
 })
 export class OverviewComponent {
-  status = '';
+  get dishes(): Dish[] {
+    return this.productService.getDishes();
+  }
 
-  readonly dishes: Dish[] = [
-    {
-      title: 'Pizza',
-      course: 'mains',
-      price: 5.95,
-      imagePath: 'pizza.svg',
-      remarks: 'Empfehlung',
-    },
-    {
-      title: 'Pasta',
-      course: 'mains',
-      price: 7.89,
-      imagePath: 'pasta.svg',
-    },
-    {
-      title: 'Salat',
-      course: 'starters',
-      price: 3.99,
-      imagePath: 'salad.svg',
-      remarks: 'Angebot',
-    },
-    {
-      title: 'Cupcake',
-      course: 'desserts',
-      price: 3.99,
-      imagePath: 'cake.svg',
-    },
-  ];
+  constructor(
+    private productService: ProductService,
+    private orderService: OrderService,
+    private messageService: MessageService
+  ) {}
 
-  updateStatus<T>($event: T, type: string) {
-    this.status = `${type}: ${JSON.stringify($event)}`;
+  addOrder(args: OrderEventArg) {
+    this.orderService.addOrder(args.tableNo, args.dish);
+    this.messageService.addMessage(
+      `${args.dish.title} an Tisch #${args.tableNo} bitte!`
+    );
   }
 }

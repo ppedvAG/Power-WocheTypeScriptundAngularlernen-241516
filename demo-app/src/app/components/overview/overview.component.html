@@ -2,7 +2,7 @@
 
 <div class="flex">
   <ng-container *ngFor="let dish of dishes">
-    <app-card [dish]="dish" (ordered)="updateStatus($event, 'Order')">
+    <app-card [dish]="dish" (ordered)="addOrder($event)">
       <img [src]="dish.imagePath" [alt]="dish.title" />
 
       <div *ngIf="dish.remarks !== undefined" remark class="remarks">
@@ -12,9 +12,6 @@
   </ng-container>
 </div>
 
-<p>{{ status }}</p>
+<hr />
 
-<app-rating
-  [rating]="3"
-  (ratingChanged)="updateStatus($event, 'Rating')"
-></app-rating>
+<app-tables></app-tables>
