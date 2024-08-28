@@ -1,12 +1,19 @@
 <ul>
-    <li><app-task-item [item]="taskList[0]" /></li>
+    @for (task of taskList; track $index) {
+    <li title="#{{ $index }}"><app-task-item [item]="task" /></li>
+    }
 </ul>
 
-<form class="grid">
-    <label for="">Aufgabe</label>
-    <input type="text" (input.enter)="addTask($event, 'Irgendwas')" />
+<form #formRef class="grid">
+    <label for="title">Aufgabe</label>
+    <input id="title" #titleRef type="text" required (input.enter)="addTask($event, titleRef.value)" />
     <br />
-    <button (click)="addTask($event, 'Irgendwas')">Neue Aufgabe</button>
+    <button (click)="addTask($event, titleRef.value)">Neue Aufgabe</button>
 </form>
 
-<p class="status">{{ status }}</p>
+@if (status) {
+<app-status-element>
+    <span title>Information</span>
+    {{ status }}
+</app-status-element>
+}

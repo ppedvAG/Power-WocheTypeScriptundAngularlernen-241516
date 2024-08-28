@@ -1,0 +1,17 @@
+.status {
+    background-color: aliceblue;
+    border: 1px solid gainsboro;
+    border-radius: .6em;
+}
+
+.status legend {
+    padding: 0 .2rem;
+    background-color: inherit;
+    border-right: inherit;
+    border-bottom: inherit;
+    border-radius: inherit;
+}
+
+.status p {
+    text-align: center;
+}
