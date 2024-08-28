@@ -1,0 +1,10 @@
+<ul class="list">
+    @for (item of service.items(); track $index) {
+    <li class="toast">
+        <app-status-element>
+            <span title>{{ item.title }}</span>
+            {{ item.message }}
+        </app-status-element>
+    </li>
+    }
+</ul>

@@ -1,0 +1,10 @@
+.list {
+    list-style: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.list > .toast {
+    margin-bottom: .4rem;
+}

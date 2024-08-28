@@ -1,0 +1,6 @@
+<form #formRef class="grid">
+    <label for="title">Aufgabe</label>
+    <input id="title" #titleRef type="text" required (input.enter)="addTask($event, titleRef.value)" />
+    <br />
+    <button (click)="addTask($event, titleRef.value)">Neue Aufgabe</button>
+</form>

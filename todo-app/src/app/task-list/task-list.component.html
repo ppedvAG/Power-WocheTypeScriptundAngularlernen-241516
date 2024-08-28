@@ -1,19 +1,9 @@
 <ul>
-    @for (task of taskList; track $index) {
+    @for (task of taskService.items(); track $index) {
     <li title="#{{ $index }}"><app-task-item [item]="task" /></li>
     }
 </ul>
 
-<form #formRef class="grid">
-    <label for="title">Aufgabe</label>
-    <input id="title" #titleRef type="text" required (input.enter)="addTask($event, titleRef.value)" />
-    <br />
-    <button (click)="addTask($event, titleRef.value)">Neue Aufgabe</button>
-</form>
+<hr />
 
-@if (status) {
-<app-status-element>
-    <span title>Information</span>
-    {{ status }}
-</app-status-element>
-}
+<app-task-form />

@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { TaskItemComponent } from './task-item/task-item.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { StatusElementComponent } from './shared/status-element/status-element.component';
+import { TaskFormComponent } from './task-form/task-form.component';
+import { ToastListComponent } from './shared/toast-list/toast-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TaskItemComponent,
     TaskListComponent,
-    StatusElementComponent
+    StatusElementComponent,
+    TaskFormComponent,
+    ToastListComponent
   ],
   imports: [
     BrowserModule,
