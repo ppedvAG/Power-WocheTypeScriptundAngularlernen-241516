@@ -1,20 +1,16 @@
 <p>overview works!</p>
 
-<app-card
-  title="Pizza"
-  [price]="6.99"
-  (ordered)="updateStatus($event, 'Order')"
->
-  <img src="pizza.svg" alt="Pizza" />
-</app-card>
+<div class="flex">
+  <ng-container *ngFor="let dish of dishes">
+    <app-card [dish]="dish" (ordered)="updateStatus($event, 'Order')">
+      <img [src]="dish.imagePath" [alt]="dish.title" />
 
-<app-card
-  title="Pasta"
-  [price]="9.99"
-  (ordered)="updateStatus($event, 'Order')"
->
-  <img src="pasta.svg" alt="Pasta" />
-</app-card>
+      <div *ngIf="dish.remarks !== undefined" remark class="remarks">
+        {{ dish.remarks }}
+      </div>
+    </app-card>
+  </ng-container>
+</div>
 
 <p>{{ status }}</p>
 

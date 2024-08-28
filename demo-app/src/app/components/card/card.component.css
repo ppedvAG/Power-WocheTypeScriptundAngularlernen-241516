@@ -8,6 +8,18 @@
     gap: 1rem;
 }
 
+.starters {
+    background-color: honeydew;
+}
+
+.desserts {
+    background-color: lavenderblush;
+}
+
+.sides {
+    background-color: aliceblue;
+}
+
 .content {
     grid-row: 1 / span 4;
 }

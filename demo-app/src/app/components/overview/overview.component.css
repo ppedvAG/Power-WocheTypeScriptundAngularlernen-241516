@@ -1,0 +1,11 @@
+
+.remarks {
+    position: relative;
+    top: -2em;
+    transform: rotate(-5deg);
+    color: red;
+    background-color: #FFFFFFC0;
+    font-weight: 500;
+    text-align: center;
+    padding: 0 .3em;
+}

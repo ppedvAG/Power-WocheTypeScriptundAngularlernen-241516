@@ -1,12 +1,16 @@
-<div class="card">
+<div class="card" [ngClass]="dish.course">
   <span class="content">
     <ng-content></ng-content>
   </span>
   <label>Gericht</label>
-  <span>{{ title() }}</span>
+  <span>{{ dish.title }}</span>
   <label>Preis</label>
-  <span>{{ price() }}</span>
+  <span>{{ dish.price }}</span>
+  <label>Tisch-Nr.</label>
+  <input type="number" #inputRef min="1" max="12" value="1" />
   <div class="actions">
-    <button (click)="order()">Bestellen</button>
+    <button (click)="order(+inputRef.value)">Bestellen</button>
   </div>
+
+  <ng-content select="remark"></ng-content>
 </div>

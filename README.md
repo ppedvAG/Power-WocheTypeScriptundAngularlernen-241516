@@ -9,19 +9,19 @@
 
 ## M002 | [COMPONENTS](https://angular.dev/guide/components)
 
--   [ ] Import and selectors
--   [ ] Class fields / properties
--   [ ] Input, Output Events
--   [ ] Content Projection (ng-content)
+-   [x] Import and selectors
+-   [x] Class fields / properties
+-   [x] Input, Output Events
+-   [x] Content Projection (ng-content)
 
 ## M003 | [TEMPLATES](https://angular.dev/guide/templates)
 
--   [ ] Text Interpolation
--   [ ] Template Statements
--   [ ] Data-Binding
--   [ ] Class- and Style-Binding
+-   [x] Text Interpolation
+-   [x] Template Statements
+-   [x] Data-Binding
+-   [x] Class- and Style-Binding
 -   [ ] Control Flow
--   [ ] Template Variables
+-   [x] Template Variables
 
 ## M004 | [DI & SERVICES](https://angular.dev/guide/di)
 

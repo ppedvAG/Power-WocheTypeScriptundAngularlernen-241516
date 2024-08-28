@@ -1,4 +1,7 @@
-import { Component, input, output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Dish } from '../../models/dish.model';
+
+export type OrderEventArg = { dish: Dish; tableNo: number };
 
 @Component({
   selector: 'app-card',
@@ -8,13 +11,17 @@ import { Component, input, output } from '@angular/core';
 export class CardComponent {
   // Hier verwenden wir die neuen Angular signals statt die herkoemmlichen Decorators @Input und @Output
   // Dabei ist zu beachten, dass wir title wie eine function aufrufen muessen: const value = title()
-  title = input<string>('');
-  price = input<number>(0);
-  ordered = output<{}>();
+  // dish = input(<Dish>{});
+  // title = computed(() => this.dish().title);
+  // price = computed(() => this.dish().price);
+  @Input({ required: true }) dish!: Dish;
 
-  order() {
+  @Output() ordered = new EventEmitter<OrderEventArg>();
+
+  order(tableNo: number) {
     this.ordered.emit({
-      title: this.title(),
+      dish: this.dish,
+      tableNo: tableNo,
     });
   }
 }
