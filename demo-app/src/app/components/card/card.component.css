@@ -1,0 +1,21 @@
+.card {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: bisque;
+    border-radius: 1rem;
+    padding: .8rem;
+    margin: .8rem 0;
+    gap: 1rem;
+}
+
+.content {
+    grid-row: 1 / span 4;
+}
+
+label {
+    font-weight: bold;
+}
+
+input {
+    width: 3rem;
+}

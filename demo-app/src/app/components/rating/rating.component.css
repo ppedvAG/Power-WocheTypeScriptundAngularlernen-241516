@@ -1,0 +1,9 @@
+:host {
+    font-size: x-large;
+    color: orange;
+}
+
+.flex {
+    align-items: center;
+    gap: .4rem;
+}

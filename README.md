@@ -4,10 +4,10 @@
 
 -   [x] [Angular CLI](https://angular.dev/tools/cli)
 -   [x] [VSCode extensions](https://marketplace.visualstudio.com/search?term=angular+essentials&target=VSCode)
--   [ ] [DevTools](https://angular.dev/tools/devtools)
--   [ ] Projektstruktur
+-   [x] [DevTools](https://angular.dev/tools/devtools)
+-   [x] Projektstruktur
 
-## M003 | [COMPONENTS](https://angular.dev/guide/components)
+## M002 | [COMPONENTS](https://angular.dev/guide/components)
 
 -   [ ] Import and selectors
 -   [ ] Class fields / properties

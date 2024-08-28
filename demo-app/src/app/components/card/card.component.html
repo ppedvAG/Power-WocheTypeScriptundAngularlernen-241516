@@ -1,0 +1,12 @@
+<div class="card">
+  <span class="content">
+    <ng-content></ng-content>
+  </span>
+  <label>Gericht</label>
+  <span>{{ title() }}</span>
+  <label>Preis</label>
+  <span>{{ price() }}</span>
+  <div class="actions">
+    <button (click)="order()">Bestellen</button>
+  </div>
+</div>

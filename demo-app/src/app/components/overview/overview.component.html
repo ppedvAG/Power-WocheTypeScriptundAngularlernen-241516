@@ -1,0 +1,24 @@
+<p>overview works!</p>
+
+<app-card
+  title="Pizza"
+  [price]="6.99"
+  (ordered)="updateStatus($event, 'Order')"
+>
+  <img src="pizza.svg" alt="Pizza" />
+</app-card>
+
+<app-card
+  title="Pasta"
+  [price]="9.99"
+  (ordered)="updateStatus($event, 'Order')"
+>
+  <img src="pasta.svg" alt="Pasta" />
+</app-card>
+
+<p>{{ status }}</p>
+
+<app-rating
+  [rating]="3"
+  (ratingChanged)="updateStatus($event, 'Rating')"
+></app-rating>
