@@ -5,6 +5,8 @@ import { TablesComponent } from './routes/tables/tables.component';
 import { LoginComponent } from './routes/login/login.component';
 import { RegisterComponent } from './routes/register/register.component';
 import { NotFoundComponent } from './routes/not-found/not-found.component';
+import { ProfileComponent } from './routes/profile/profile.component';
+import { loginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   {
@@ -15,10 +17,12 @@ const routes: Routes = [
   {
     path: 'order',
     component: OverviewComponent,
+    canActivate: [loginGuard],
   },
   {
     path: 'tables/:id',
     component: TablesComponent,
+    canActivate: [loginGuard],
   },
   {
     path: 'login',
@@ -27,6 +31,11 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [loginGuard],
   },
   {
     path: '**',

@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { OrderService } from './services/order.service';
+import { AccountService } from './services/account.service';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +10,15 @@ import { OrderService } from './services/order.service';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'demo-app';
+  private subscription?: Subscription;
 
-  constructor(public orderService: OrderService) {}
+  constructor(
+    public orderService: OrderService,
+    public accountService: AccountService,
+    router: Router
+  ) {}
+
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
+  }
 }

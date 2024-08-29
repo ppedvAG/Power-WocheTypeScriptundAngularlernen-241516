@@ -14,6 +14,7 @@ import { SanitizePipe } from './pipes/sanitize.pipe';
 import { NotFoundComponent } from './routes/not-found/not-found.component';
 import { LoginComponent } from './routes/login/login.component';
 import { RegisterComponent } from './routes/register/register.component';
+import { ProfileComponent } from './routes/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { RegisterComponent } from './routes/register/register.component';
     NotFoundComponent,
     LoginComponent,
     RegisterComponent,
+    ProfileComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

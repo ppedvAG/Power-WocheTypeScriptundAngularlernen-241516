@@ -53,6 +53,8 @@ export class TablesComponent implements OnInit, OnDestroy {
   payBill() {
     this.orderService.removeOrder(this.currentTable);
     this.messageService.addMessage(`Tisch #${this.currentTable} sagt Danke!`);
+
+    this.router.navigate(['/']);
   }
 
   updateStatus<T>($event: T, type: string) {

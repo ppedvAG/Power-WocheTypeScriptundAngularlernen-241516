@@ -1,18 +1,25 @@
 <nav>
   <ul>
-    <li><a [routerLink]="['/login']">Login</a></li>
-    <li><a [routerLink]="['/order']">Bestellen</a></li>
-    @for (no of orderService.tables; track no) {
+    @if (accountService.loggedIn$ | async) {
     <li>
+      <a [routerLink]="['/order']">Bestellen</a>
+    </li>
+    <li *ngFor="let no of orderService.tables">
       <a [routerLink]="['/tables', no]">Tisch #{{ no }}</a>
     </li>
-
+    } @else {
+    <li>
+      <a [routerLink]="['/login']">Login</a>
+    </li>
     }
   </ul>
 </nav>
 
 <main class="main">
-  <h1>Hello, {{ title }}</h1>
+  <!-- mit der async Pipe loesen wir den Inhalt des Observable auf -->
+  <h1 *ngIf="accountService.currentUserName$ | async as title">
+    <a routerLink="profile">Hello, {{ title }}</a>
+  </h1>
 
   <router-outlet />
 </main>
