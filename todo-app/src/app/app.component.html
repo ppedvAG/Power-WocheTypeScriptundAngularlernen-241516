@@ -1,18 +1,17 @@
 <header>
-  <h2>Hello, {{ title }}</h2>
-  <nav>
-    <ul>
-      <li><a routerLink="/" title="Liste aller Aufgaben">Übersicht</a></li>
-      <li>
-        <a routerLink="/new" title="Neue Aufgabe anlegen">Neue Aufgabe</a>
-      </li>
-      <li><a routerLink="/invalid" title="Page Not Found">404</a></li>
-    </ul>
-  </nav>
+    <h2>Hello, {{ title }}</h2>
+    <nav>
+        <ul>
+            <li><a routerLink="/" title="Liste aller Aufgaben">Übersicht</a></li>
+            <li><a routerLink="/new" title="Neue Aufgabe anlegen">Neue Aufgabe</a></li>
+            <li><a routerLink="/terms-of-use" title="Nutzungsbedingungen">?</a></li>
+            <li><a routerLink="/invalid" title="Page Not Found">404</a></li>
+        </ul>
+    </nav>
 </header>
 
 <main>
-  <router-outlet />
+    <router-outlet />
 </main>
 
 <app-toast-list />

@@ -10,20 +10,22 @@ import { TaskFormComponent } from './routes/task-form/task-form.component';
 import { ToastListComponent } from './shared/toast-list/toast-list.component';
 import { RelativeDatePipe } from './pipes/relative-date.pipe';
 import { NotFoundComponent } from './routes/not-found/not-found.component';
+import { TermsOfUseComponent } from './routes/terms-of-use/terms-of-use.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TaskItemComponent,
-    TaskListComponent,
-    StatusElementComponent,
-    TaskFormComponent,
-    ToastListComponent,
-    RelativeDatePipe,
-    NotFoundComponent,
-  ],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        TaskItemComponent,
+        TaskListComponent,
+        StatusElementComponent,
+        TaskFormComponent,
+        ToastListComponent,
+        RelativeDatePipe,
+        NotFoundComponent,
+        TermsOfUseComponent,
+    ],
+    imports: [BrowserModule, AppRoutingModule],
+    providers: [],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}
