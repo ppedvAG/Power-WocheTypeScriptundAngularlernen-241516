@@ -1,0 +1,15 @@
+.item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-gap: 1rem;
+}
+  
+.important::before {
+    content: '❗';
+    color: red;
+}
+
+.low::before {
+    content: ' ⇩ ';
+    color: limegreen;
+}

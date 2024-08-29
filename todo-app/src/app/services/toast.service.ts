@@ -17,6 +17,14 @@ export class ToastService {
         });
     }
 
+    sendWarning(message: string) {
+        this.sendMessage({
+            type: 'warning',
+            title: 'Warnung',
+            message,
+        });
+    }
+
     sendError(message: string) {
         this.sendMessage({
             type: 'error',

@@ -1,0 +1,25 @@
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul > li {
+    display: inline-block;
+}
+
+ul > li:not(:last-child)::after {
+    content: '|';
+    padding: 0 .6rem;
+}
+
+ul > li > a {
+    text-decoration: none;
+}
+
+ul > li > a:hover {
+    text-decoration: underline;
+}
+
+main {
+    margin: 1rem;
+}

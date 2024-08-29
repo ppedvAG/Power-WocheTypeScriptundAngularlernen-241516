@@ -1,0 +1,21 @@
+<form #formRef class="grid">
+    <label for="Id">Id</label>
+    <input id="id" type="text" [value]="id" disabled />
+    <label for="title">Aufgabe</label>
+    <input
+        id="title"
+        #titleRef
+        type="text"
+        required
+        [value]="editing ? currentTask.title : ''"
+        (input.enter)="addTask($event, titleRef.value)"
+    />
+    <label for="dueDate">Fälligkeit</label>
+    <input id="dueDate" #dueDateRef type="date" [value]="editing ? (currentTask.dueDate | date : 'yyyy-MM-dd') : ''" />
+    <br />
+    @if (editing) {
+    <button (click)="updateTask($event, titleRef.value, dueDateRef.valueAsDate)">Speichern</button>
+    } @else {
+    <button (click)="addTask($event, titleRef.value, dueDateRef.valueAsDate)">Neue Aufgabe</button>
+    }
+</form>
