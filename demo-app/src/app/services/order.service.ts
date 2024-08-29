@@ -45,6 +45,10 @@ export class OrderService {
     return this.getByTable(tableNo).reduce((a, b) => a + b.price, 0);
   }
 
+  getOrderDateByTable(tableNo: number): Date | undefined {
+    return this.orders[tableNo]?.date;
+  }
+
   addOrder(tableNo: number, dish: Dish) {
     if (this.orders[tableNo]) {
       this.orders[tableNo].items.push(dish);

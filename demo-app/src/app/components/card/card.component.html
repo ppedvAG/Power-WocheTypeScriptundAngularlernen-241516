@@ -5,12 +5,43 @@
   <label>Gericht</label>
   <span>{{ dish.title }}</span>
   <label>Preis</label>
+
+  <!-- Beispiel mit neuem Control Flow -- deutlich einfacher -->
+  <!-- @if (dish.price < 6) {
+  <span appHighlight="yellow">{{ dish.price }}</span>
+  } @else {
   <span>{{ dish.price }}</span>
+  } -->
+
+  <span *ngIf="dish.price < 6; else priceTemplate">
+    <span appHighlight="yellow">
+      <ng-container [ngTemplateOutlet]="priceTemplate"></ng-container>
+    </span>
+  </span>
+  <!-- <span *ngIf="dish.price >= 6">{{ dish.price }}</span> -->
+
   <label>Tisch-Nr.</label>
   <input type="number" #inputRef min="1" max="12" value="1" />
+
   <div class="actions">
     <button (click)="order(+inputRef.value)">Bestellen</button>
   </div>
+  <br />
+
+  <details class="col-span-3" *ngIf="dish.description">
+    <summary class="center">
+      <label>Beschreibung</label>
+    </summary>
+    <span
+      class="description"
+      [innerHTML]="dish.description | marked | sanitize"
+    ></span>
+  </details>
 
   <ng-content select="remark"></ng-content>
 </div>
+
+<!-- Templates sind eine Art "functions" mit welchen wir Inhalte wiederholen koennen. -->
+<ng-template #priceTemplate>{{
+  dish.price | currency : "EUR" : "symbol" : "1.2"
+}}</ng-template>

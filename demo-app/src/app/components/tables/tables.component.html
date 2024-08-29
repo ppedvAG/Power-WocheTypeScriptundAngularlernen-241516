@@ -3,6 +3,8 @@
 <button (click)="setTable(i)">Tisch # {{ i }}</button>
 } @if (currentTable !== 0) {
 <div class="table">
+  <span>Bestellt am </span>
+  <span>{{ getOrderDate() | date : "d. MMMM y 'um' H:mm 'Uhr'" }}</span>
   <ul>
     @for (title of getTitles(); track $index) {
     <li>
@@ -10,7 +12,7 @@
     </li>
     }
   </ul>
-  <p>Zu zahlen: {{ getPrice() }}</p>
+  <p>Zu zahlen: {{ getPrice() | currency : "EUR" : "symbol" : "1.2" }}</p>
   <button (click)="payBill()">Bezahlen</button>
 
   <p>Bewerten Sie Ihr Menü</p>

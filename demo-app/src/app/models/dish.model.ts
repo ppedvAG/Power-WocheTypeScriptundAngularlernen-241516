@@ -6,4 +6,5 @@ export interface Dish {
   price: number;
   imagePath: string;
   remarks?: string;
+  description?: string;
 }

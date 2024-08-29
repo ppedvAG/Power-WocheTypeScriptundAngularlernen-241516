@@ -20,22 +20,23 @@
 -   [x] Template Statements
 -   [x] Data-Binding
 -   [x] Class- and Style-Binding
--   [ ] Control Flow
+-   [x] Control Flow
 -   [x] Template Variables
 
 ## M004 | [DI & SERVICES](https://angular.dev/guide/di)
 
--   [ ] Dependency Injection
--   [ ] Services
--   [ ] Lifecycle: ngOnInit, ngOnChange, ngAfterViewInit
--   [ ] [Signals](https://angular.dev/guide/signals)
+-   [x] Dependency Injection
+-   [x] Services
+-   [x] Lifecycle: ngOnInit, ngOnChange, ngAfterViewInit
+-   [x] [Signals](https://angular.dev/guide/signals)
 
 ## M005 | [PIPES & DIRECTIVES](https://angular.dev/guide/built-in-directives)
 
--   [ ] [Pipes](https://angular.dev/guide/pipes)
--   [ ] Built-In: ngClass, ngStyle
--   [ ] Structural: ngFor, ngIf, ngSwitch
-<!-- - [ ] ng-template -->
+-   [x] Eigene Directives
+-   [x] [Pipes](https://angular.dev/guide/pipes)
+-   [x] Built-In: ngClass, ngStyle
+-   [x] Structural: ngFor, ngIf, ngSwitch
+-   [x] ng-template
 
 ## M006 | [ROUTING](https://angular.dev/guide/routing)
 

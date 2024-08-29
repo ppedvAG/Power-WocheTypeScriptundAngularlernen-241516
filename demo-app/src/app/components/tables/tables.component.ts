@@ -29,6 +29,10 @@ export class TablesComponent {
     return this.orderService.getPriceByTable(this.currentTable);
   }
 
+  getOrderDate() {
+    return this.orderService.getOrderDateByTable(this.currentTable);
+  }
+
   payBill() {
     this.orderService.removeOrder(this.currentTable);
   }
