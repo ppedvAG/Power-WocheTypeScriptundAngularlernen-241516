@@ -1,7 +1,4 @@
-@for (i of orderService.tables; track i) {
-
-<button (click)="setTable(i)">Tisch # {{ i }}</button>
-} @if (currentTable !== 0) {
+@if (currentTable !== 0) {
 <div class="table">
   <span>Bestellt am </span>
   <span>{{ getOrderDate() | date : "d. MMMM y 'um' H:mm 'Uhr'" }}</span>
@@ -23,5 +20,5 @@
 </div>
 
 } @else {
-<p>Kein Tisch ausgewählt</p>
+<p>Tisch nicht gefunden!</p>
 }

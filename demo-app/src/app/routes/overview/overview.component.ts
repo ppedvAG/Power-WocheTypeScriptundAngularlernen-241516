@@ -3,7 +3,7 @@ import { Dish } from '../../models/dish.model';
 import { ProductService } from '../../services/product.service';
 import { MessageService } from '../../services/message.service';
 import { OrderService } from '../../services/order.service';
-import { OrderEventArg } from '../card/card.component';
+import { OrderEventArg } from '../../components/card/card.component';
 
 @Component({
   selector: 'app-overview',

@@ -3,14 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { OverviewComponent } from './components/overview/overview.component';
+import { OverviewComponent } from './routes/overview/overview.component';
 import { CardComponent } from './components/card/card.component';
 import { RatingComponent } from './components/rating/rating.component';
 import { StatusComponent } from './components/status/status.component';
-import { TablesComponent } from './components/tables/tables.component';
+import { TablesComponent } from './routes/tables/tables.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { MarkedPipe } from './pipes/marked.pipe';
 import { SanitizePipe } from './pipes/sanitize.pipe';
+import { NotFoundComponent } from './routes/not-found/not-found.component';
+import { LoginComponent } from './routes/login/login.component';
+import { RegisterComponent } from './routes/register/register.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,9 @@ import { SanitizePipe } from './pipes/sanitize.pipe';
     HighlightDirective,
     MarkedPipe,
     SanitizePipe,
+    NotFoundComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
