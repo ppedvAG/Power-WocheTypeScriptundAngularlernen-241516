@@ -40,16 +40,16 @@
 
 ## M006 | [ROUTING](https://angular.dev/guide/routing)
 
--   [ ] RoutingModule & RouterModule
--   [ ] Routes & Route
--   [ ] Paths, Endpoints, Redirections
--   [ ] router-outlet & routerLink
+-   [x] RoutingModule: Paths, Endpoints, Redirections
+-   [x] router-outlet & routerLink
+-   [x] Route & ActivatedRoute für Parameter aus URI
+-   [x] Guards
 
 ## M007 | [FORMS](https://angular.dev/guide/forms)
 
--   [ ] [Reactive forms](https://angular.dev/guide/forms/reactive-forms)
--   [ ] FormBuilder
--   [ ] Validation
+-   [x] [Reactive forms](https://angular.dev/guide/forms/reactive-forms)
+-   [x] FormBuilder
+-   [x] Validation
 -   [ ] [Template-driven with ngModel](https://angular.dev/guide/forms/template-driven-forms)
 
 ## M008 | [ASYNC CODING & RxJS](https://rxjs.dev/)

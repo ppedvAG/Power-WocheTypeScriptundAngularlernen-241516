@@ -1,1 +1,40 @@
-<p>register works!</p>
+<form [formGroup]="formGroup" (ngSubmit)="submit()" class="grid-2">
+  <label for="username">Benutzername</label>
+  <input id="username" type="text" formControlName="username" />
+
+  <label for="password">Kennwort</label>
+  <input id="password" type="password" formControlName="password" />
+
+  <p>Adresse</p>
+  <div formGroupName="address" class="grid-2">
+    <label for="street">Straße</label>
+    <input id="street" type="text" formControlName="street" />
+
+    <label for="city">Stadt</label>
+    <input id="city" type="text" formControlName="city" />
+
+    <label for="state">Bundesland</label>
+    <input id="state" type="text" formControlName="state" />
+
+    <label for="zip">Postleitzahl</label>
+    <input id="zip" type="text" formControlName="zip" />
+  </div>
+
+  <p>Alias <button type="button" (click)="addAlias()">+</button></p>
+  <div formArrayName="aliases">
+    <div *ngFor="let alias of aliases.controls; let i = index">
+      <input
+        id="alias-{{ i }}"
+        type="text"
+        [formControlName]="i"
+        (keydown.enter)="addAlias()"
+      />
+      <button type="button" (click)="removeAlias(i)">-</button>
+    </div>
+  </div>
+
+  <p class="right">
+    {{ formGroup.status === "VALID" ? "✓" : "✗" }}
+  </p>
+  <button type="submit" [disabled]="!formGroup.valid">Registrieren</button>
+</form>
