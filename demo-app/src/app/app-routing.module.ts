@@ -6,7 +6,7 @@ import { LoginComponent } from './routes/login/login.component';
 import { RegisterComponent } from './routes/register/register.component';
 import { NotFoundComponent } from './routes/not-found/not-found.component';
 import { ProfileComponent } from './routes/profile/profile.component';
-import { loginGuard } from './guards/login.guard';
+import { loginGuard, loginGuard$ } from './guards/login.guard';
 
 const routes: Routes = [
   {
@@ -17,7 +17,7 @@ const routes: Routes = [
   {
     path: 'order',
     component: OverviewComponent,
-    canActivate: [loginGuard],
+    canActivate: [loginGuard, loginGuard$],
   },
   {
     path: 'tables/:id',

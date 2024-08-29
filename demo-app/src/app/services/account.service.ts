@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Credentials } from '../models/user.model';
-import { map, Subject } from 'rxjs';
+import { map, Subject, tap } from 'rxjs';
 
 const guest = {
   username: 'gast',
@@ -18,7 +18,8 @@ export class AccountService {
   registeredUsers: Credentials[] = [guest];
 
   readonly currentUserName$ = this.currentUser$.pipe(
-    map((user) => user?.username)
+    map((user) => user?.username),
+    tap(console.log) // jedes mal wenn currentUserSubject sich aendert
   );
 
   readonly loggedIn$ = this.currentUser$.pipe(map((user) => !!user));

@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
 import { CanActivateFn } from '@angular/router';
-import { lastValueFrom } from 'rxjs';
+import { tap } from 'rxjs';
 import { AccountService } from '../services/account.service';
 
 export const loginGuard: CanActivateFn = (route, state) => {
@@ -8,11 +8,10 @@ export const loginGuard: CanActivateFn = (route, state) => {
   return Boolean(service.currentUser());
 };
 
-export const loginGuardAsync: CanActivateFn = async (route, state) => {
-  // Ich moechte eine subscription verhindern
-  // Eine andere Option ist, dass Observables zu einem Promise umzuwandeln
+export const loginGuard$: CanActivateFn = (route, state) => {
+  // Bug: Wert aus observable kommt einen Zyklus zu spaet an!
   const service = inject(AccountService);
-  const user = await lastValueFrom(service.currentUser$);
-  console.log('user in guard', user);
-  return Boolean(user);
+  return service.loggedIn$.pipe(
+    tap((v) => console.log('loginGuard', v ? 'okay' : 'nope'))
+  );
 };
