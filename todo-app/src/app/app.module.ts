@@ -8,21 +8,20 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { StatusElementComponent } from './shared/status-element/status-element.component';
 import { TaskFormComponent } from './task-form/task-form.component';
 import { ToastListComponent } from './shared/toast-list/toast-list.component';
+import { RelativeDatePipe } from './pipes/relative-date.pipe';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TaskItemComponent,
-    TaskListComponent,
-    StatusElementComponent,
-    TaskFormComponent,
-    ToastListComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        TaskItemComponent,
+        TaskListComponent,
+        StatusElementComponent,
+        TaskFormComponent,
+        ToastListComponent,
+        RelativeDatePipe,
+    ],
+    imports: [BrowserModule, AppRoutingModule],
+    providers: [],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

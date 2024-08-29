@@ -1,6 +1,4 @@
 .status {
-    background-color: aliceblue;
-    border: 1px solid gainsboro;
     border-radius: .6em;
 }
 
@@ -14,4 +12,24 @@
 
 .status p {
     text-align: center;
+}
+
+.info {
+    background-color: aliceblue;
+    border: 1px solid gainsboro;
+}
+
+.success {
+    background-color: lightgreen;
+    border: 1px solid green;
+}
+
+.error {
+    background-color: lightpink;
+    border: 1px solid darkred;
+}
+
+.warning {
+    background-color: lightyellow;
+    border: 1px solid gold;
 }
