@@ -24,6 +24,7 @@
   <div formArrayName="aliases">
     <div *ngFor="let alias of aliases.controls; let i = index">
       <input
+        #aliasInputRef
         id="alias-{{ i }}"
         type="text"
         [formControlName]="i"
