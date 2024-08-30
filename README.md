@@ -55,10 +55,10 @@
 
 ## M008 | [ASYNC CODING & RxJS](https://rxjs.dev/)
 
--   [ ] Observables
--   [ ] [HttpClienModule](https://angular.dev/guide/http)
--   [ ] [RxJS Interop](https://angular.dev/guide/signals/rxjs-interop)
--   [ ] WebSockets
+-   [x] Observables
+-   [x] [HttpClienModule](https://angular.dev/guide/http)
+-   [x] [RxJS Interop](https://angular.dev/guide/signals/rxjs-interop)
+-   [x] WebSockets
 
 ## M009 | [MODULES](https://angular.dev/guide/understanding-angular-overview)
 

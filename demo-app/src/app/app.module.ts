@@ -17,6 +17,7 @@ import { NotFoundComponent } from './routes/not-found/not-found.component';
 import { LoginComponent } from './routes/login/login.component';
 import { RegisterComponent } from './routes/register/register.component';
 import { ProfileComponent } from './routes/profile/profile.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ProfileComponent } from './routes/profile/profile.component';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,

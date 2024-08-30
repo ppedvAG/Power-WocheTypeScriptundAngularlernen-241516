@@ -1,3 +1,5 @@
+<app-chat />
+
 <div class="flex">
   <ng-container *ngFor="let dish of dishes$ | async">
     <app-card [dish]="dish" (ordered)="addOrder($event)">
