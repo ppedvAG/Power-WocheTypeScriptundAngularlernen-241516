@@ -1,5 +1,11 @@
+<div class="mode-select">
+    <label> <input type="radio" name="mode" value="local" [(ngModel)]="selectedMode" /> Local </label>
+    <label> <input type="radio" name="mode" value="rest" [(ngModel)]="selectedMode" /> REST </label>
+    <label> <input type="radio" name="mode" value="socket" [(ngModel)]="selectedMode" /> Sockets </label>
+</div>
+
 <ul>
-    @for (task of taskService.items(); track $index) {
+    @for (task of tasks(); track $index) {
     <li title="#{{ $index }}">
         <app-task-item [item]="task" />
     </li>

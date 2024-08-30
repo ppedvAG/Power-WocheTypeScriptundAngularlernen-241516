@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TaskService } from '../../services/task.service';
+import { TaskRemoteService } from '../../services/task-remote.service';
 import { ToastService } from '../../services/toast.service';
 import { TaskItem } from '../../../lib/models/task-item';
 import { DateTime } from 'luxon';
@@ -31,7 +31,7 @@ export class TaskFormComponent implements OnInit {
     }
 
     constructor(
-        private taskService: TaskService,
+        private taskService: TaskRemoteService,
         private toastService: ToastService,
         private formBuilder: FormBuilder,
         private router: Router,
@@ -55,7 +55,7 @@ export class TaskFormComponent implements OnInit {
         });
     }
 
-    submit() {
+    async submit() {
         const task: TaskItem = {
             id: this.id || '',
             title: this.formGroup!.value.title!,
@@ -68,11 +68,10 @@ export class TaskFormComponent implements OnInit {
         };
 
         if (this.editing) {
-            this.taskService.updateTask(this.id!, task);
+            await this.taskService.updateTask(this.id!, task);
             this.toastService.sendInfo(`"${task.title}" wurde gespeichert`);
         } else {
-            this.taskService.addTask(task);
-            const list = this.taskService.items();
+            const list = await this.taskService.addTask(task);
             this.toastService.sendInfo(`${list.length} Aufgaben insgesamt`);
         }
 

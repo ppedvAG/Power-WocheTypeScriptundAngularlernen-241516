@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { TaskItem } from '../../../lib/models/task-item';
-import { TaskService } from '../../services/task.service';
+import { TaskRemoteService } from '../../services/task-remote.service';
 
 @Component({
     selector: 'app-task-item', // CSS-Element-Selektor der Komponente
@@ -11,7 +11,7 @@ import { TaskService } from '../../services/task.service';
 export class TaskItemComponent {
     @Input({ required: true }) item!: TaskItem;
 
-    constructor(private taskService: TaskService, private router: Router) {}
+    constructor(private taskService: TaskRemoteService, private router: Router) {}
 
     editTask(id: string) {
         this.router.navigate(['/edit', id]);

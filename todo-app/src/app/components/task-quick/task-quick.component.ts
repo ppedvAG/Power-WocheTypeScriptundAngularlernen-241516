@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { TaskService } from '../../services/task.service';
+import { TaskRemoteService } from '../../services/task-remote.service';
 import { TaskItem } from '../../../lib/models/task-item';
 import { ToastService } from '../../services/toast.service';
 
@@ -13,13 +13,13 @@ export class TaskQuickComponent {
 
     editing = false;
 
-    constructor(private taskService: TaskService, private toastService: ToastService) {}
+    constructor(private taskService: TaskRemoteService, private toastService: ToastService) {}
 
     get creating() {
         return !this.task.id;
     }
 
-    submit() {
+    async submit() {
         if (this.task.title) {
             if (this.creating) {
                 this.taskService.addTask(this.task);

@@ -2,3 +2,8 @@ ul {
     list-style: none;
     padding: 0;
 }
+
+.mode-select {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+}
