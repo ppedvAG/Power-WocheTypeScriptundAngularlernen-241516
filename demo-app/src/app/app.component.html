@@ -1,6 +1,6 @@
 <nav>
   <ul>
-    @if (accountService.loggedIn$ | async) {
+    @if (accountService.currentUser()) {
     <li>
       <a [routerLink]="['/order']">Bestellen</a>
     </li>

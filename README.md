@@ -51,7 +51,7 @@
 -   [x] FormBuilder
 -   [x] Validation
 -   [x] ViewChildren, QueryList<ElementRef> & ChangeDetectorRef
--   [ ] [Template-driven with ngModel](https://angular.dev/guide/forms/template-driven-forms)
+-   [x] [Template-driven with ngModel](https://angular.dev/guide/forms/template-driven-forms)
 
 ## M008 | [ASYNC CODING & RxJS](https://rxjs.dev/)
 

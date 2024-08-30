@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { Credentials } from '../models/user.model';
+import { Credentials, User } from '../models/user.model';
 import { map, Subject, tap } from 'rxjs';
 
 const guest = {
   username: 'gast',
   password: '',
-};
+} as User;
 
 @Injectable({
   providedIn: 'root',
@@ -14,8 +14,14 @@ const guest = {
 export class AccountService {
   private readonly currentUserSubject = new Subject<Credentials | null>();
   readonly currentUser$ = this.currentUserSubject.asObservable();
-  readonly currentUser = toSignal(this.currentUser$);
-  registeredUsers: Credentials[] = [guest];
+
+  // Statt Subject und Observable die neuen Signals verwenden
+  readonly currentUser = signal<Credentials | null>(null);
+
+  // Alternativ das Observable zu einem Signal umwandeln
+  // readonly currentUser = toSignal(this.currentUser$);
+
+  private readonly registeredUsers = signal<User[]>([guest]);
 
   readonly currentUserName$ = this.currentUser$.pipe(
     map((user) => user?.username),
@@ -31,8 +37,11 @@ export class AccountService {
       user.username === credentials.username &&
       user.password === credentials.password;
 
-    if (this.registeredUsers.find(matchUser)) {
+    if (this.registeredUsers().find(matchUser)) {
       this.currentUserSubject.next(credentials);
+
+      // neuere Variante mit Signals
+      this.currentUser.set(credentials);
       return true;
     }
     return false;
@@ -44,10 +53,13 @@ export class AccountService {
 
   logout() {
     this.currentUserSubject.next(null);
+
+    // neuere Variante mit Signals
+    this.currentUser.set(null);
   }
 
-  register(user: Credentials) {
-    this.registeredUsers.push(user);
+  register(user: User) {
+    this.registeredUsers.update((users) => [...users, user]);
     this.login(user);
   }
 }

@@ -17,7 +17,10 @@ const routes: Routes = [
   {
     path: 'order',
     component: OverviewComponent,
-    canActivate: [loginGuard, loginGuard$],
+    canActivate: [loginGuard],
+
+    // Alternative mit Observables
+    // canActivate: [loginGuard$],
   },
   {
     path: 'tables/:id',
