@@ -1,9 +1,0 @@
-<ul>
-    @for (task of taskService.items(); track $index) {
-    <li title="#{{ $index }}"><app-task-item [item]="task" /></li>
-    }
-</ul>
-
-<hr />
-
-<app-task-form />

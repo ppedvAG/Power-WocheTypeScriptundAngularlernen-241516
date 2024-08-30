@@ -1,8 +1,10 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TaskService } from '../../services/task.service';
 import { ToastService } from '../../services/toast.service';
 import { TaskItem } from '../../../lib/models/task-item';
+import { DateTime } from 'luxon';
 
 @Component({
     selector: 'app-task-form',
@@ -10,12 +12,14 @@ import { TaskItem } from '../../../lib/models/task-item';
     styleUrl: './task-form.component.css',
 })
 export class TaskFormComponent implements OnInit {
-    @ViewChild('formRef') formRef!: ElementRef<HTMLFormElement>;
+    formGroup?: FormGroup;
 
-    currentTask = <TaskItem>{};
+    get labels(): FormArray {
+        return <FormArray>this.formGroup?.get('labels');
+    }
 
-    get valid() {
-        return this.formRef?.nativeElement.checkValidity();
+    addLabel() {
+        this.labels.push(this.formBuilder.control(''));
     }
 
     get id(): string | null {
@@ -29,47 +33,49 @@ export class TaskFormComponent implements OnInit {
     constructor(
         private taskService: TaskService,
         private toastService: ToastService,
+        private formBuilder: FormBuilder,
         private router: Router,
         private route: ActivatedRoute
     ) {}
 
     ngOnInit(): void {
-        if (this.id) {
-            const task = this.taskService.getTask(this.id);
-            if (task) {
-                this.currentTask = task;
-            }
-        }
+        const task =
+            this.taskService.getTask(this.id ?? '') ??
+            <TaskItem>{
+                priority: 'default',
+            };
+        const dueDate = task.dueDate ? DateTime.fromJSDate(task.dueDate).toISODate() : '';
+        const labels = task.labels ? task.labels.map((e) => this.formBuilder.control(e)) : [];
+        this.formGroup = this.formBuilder.group({
+            id: { value: task.id, disabled: true },
+            title: [task.title, Validators.required],
+            dueDate: dueDate,
+            priority: task.priority,
+            labels: this.formBuilder.array(labels),
+        });
     }
 
-    addTask(e: Event, title: string, dueDate: Date | null = null) {
-        e.preventDefault();
+    submit() {
+        const task: TaskItem = {
+            id: this.id || '',
+            title: this.formGroup!.value.title!,
+            dueDate: this.formGroup!.value.dueDate
+                ? DateTime.fromISO(this.formGroup!.value.dueDate).toJSDate()
+                : undefined,
+            priority: this.formGroup!.value.priority!,
+            labels: this.labels.value,
+            completed: false,
+        };
 
-        if (!this.valid) {
-            this.toastService.sendError('Bitte geben Sie den Titel der Aufgabe ein.');
+        if (this.editing) {
+            this.taskService.updateTask(this.id!, task);
+            this.toastService.sendInfo(`"${task.title}" wurde gespeichert`);
         } else {
-            this.taskService.addTask({
-                title,
-                dueDate: dueDate ?? undefined,
-                priority: 'default',
-            });
-
+            this.taskService.addTask(task);
             const list = this.taskService.items();
             this.toastService.sendInfo(`${list.length} Aufgaben insgesamt`);
-
-            this.router.navigate(['/list']);
         }
-    }
 
-    updateTask(e: Event, title: string, dueDate: Date | null = null) {
-        e.preventDefault();
-
-        this.taskService.updateTask(this.id!, {
-            title,
-            dueDate: dueDate ?? undefined,
-        });
-
-        this.toastService.sendInfo(`"${title}" wurde gespeichert`);
         this.router.navigate(['/list']);
     }
 }

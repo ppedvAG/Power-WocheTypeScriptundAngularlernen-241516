@@ -3,3 +3,23 @@
     grid-template-columns: auto 1fr;
     gap: 1rem;
 }
+
+.grid > button {
+    grid-column: 1 / span 2;
+}
+
+label > button {
+    font-weight: normal;
+}
+
+#priority {
+    display: flex;
+    justify-content: space-between;
+    gap: .4rem;
+}
+
+.labels {
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+}

@@ -1,21 +1,32 @@
-<form #formRef class="grid">
+@if (formGroup) {
+<form class="grid" [formGroup]="formGroup" (ngSubmit)="submit()">
     <label for="Id">Id</label>
-    <input id="id" type="text" [value]="id" disabled />
+    <input id="id" type="text" formControlName="id" />
+
     <label for="title">Aufgabe</label>
-    <input
-        id="title"
-        #titleRef
-        type="text"
-        required
-        [value]="editing ? currentTask.title : ''"
-        (input.enter)="addTask($event, titleRef.value)"
-    />
+    <input id="title" type="text" required formControlName="title" />
+
     <label for="dueDate">Fälligkeit</label>
-    <input id="dueDate" #dueDateRef type="date" [value]="editing ? (currentTask.dueDate | date : 'yyyy-MM-dd') : ''" />
-    <br />
-    @if (editing) {
-    <button (click)="updateTask($event, titleRef.value, dueDateRef.valueAsDate)">Speichern</button>
-    } @else {
-    <button (click)="addTask($event, titleRef.value, dueDateRef.valueAsDate)">Neue Aufgabe</button>
-    }
+    <input id="dueDate" type="date" formControlName="dueDate" />
+
+    <label for="priority">Priorität</label>
+    <div id="priority">
+        <span title="Niedrig"> <input id="0" type="radio" formControlName="priority" value="low" /> ⇩ </span>
+        <span title="Normal"> <input id="1" type="radio" formControlName="priority" value="default" /> ~ </span>
+        <span title="Wichtig"> <input id="2" type="radio" formControlName="priority" value="important" />❗ </span>
+    </div>
+
+    <label for="labels">
+        <button type="button" (click)="addLabel()">Labels +</button>
+    </label>
+    <div class="labels" formArrayName="labels">
+        @for (label of labels.controls; track $index) {
+        <input type="text" [formControlName]="$index" />
+        }
+    </div>
+
+    <button type="submit" [disabled]="!formGroup.valid">@if (editing) { Speichern } @else { Neue Aufgabe }</button>
 </form>
+} @else {
+<p>Lade gerade '{{ id }}'</p>
+}

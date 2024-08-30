@@ -1,16 +1,23 @@
 <div class="item">
     <input type="checkbox" [checked]="item.completed" (change)="setCompleted(!item.completed)" />
-    <span
-        class="title"
-        [ngClass]="item.priority"
-        [ngStyle]="{ 'text-decoration': item.completed ? 'line-through' : 'none' }"
-        title="{{ item.id }}"
-    >
-        {{ item.title }}
-        @if(item.dueDate) {
-        <span title="{{ item.dueDate | date : 'yyyy-MM-dd' }}"> ({{ item.dueDate | relativeDate }}) </span>
-        }
-    </span>
+    <app-task-quick [task]="item">
+        <span
+            class="title"
+            [ngClass]="item.priority"
+            [ngStyle]="{ 'text-decoration': item.completed ? 'line-through' : 'none' }"
+            title="{{ item.id }}"
+        >
+            {{ item.title }}
+            @if(item.dueDate) {
+            <span title="{{ item.dueDate | date : 'yyyy-MM-dd' }}"> ({{ item.dueDate | relativeDate }}) </span>
+            }
+        </span>
+        <div class="label-group">
+            @for (label of item.labels; track $index) {
+            <span class="label">{{ label }}</span>
+            }
+        </div>
+    </app-task-quick>
     <span>
         <button (click)="editTask(item.id)">✎</button>
         <button (click)="deleteTask(item.id)">🗑</button>

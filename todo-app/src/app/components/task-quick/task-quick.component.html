@@ -1,0 +1,8 @@
+@if (creating || editing) {
+<div class="grid">
+    <input type="text" placeholder="Neue Aufgabe" [(ngModel)]="task.title" (keyup.enter)="submit()" />
+    <button (click)="submit()">✔️</button>
+</div>
+} @else {
+<span (click)="editing = true"><ng-content /></span>
+}

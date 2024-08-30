@@ -15,11 +15,12 @@ export class TaskService {
             priority: 'important',
             dueDate: inTwoDays,
             completed: false,
+            labels: ['angular', 'kurs'],
         },
     ]);
 
     getTask(id: string): TaskItem | undefined {
-        return this.items().find((t) => t.id === id);
+        return id ? this.items().find((t) => t.id === id) : undefined;
     }
 
     addTask(task: Omit<TaskItem, 'id' | 'completed'>) {
