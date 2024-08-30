@@ -1,4 +1,4 @@
-type Course = 'starters' | 'mains' | 'desserts' | 'sides';
+export type Course = 'starters' | 'mains' | 'desserts' | 'sides';
 
 export interface Dish {
   title: string;

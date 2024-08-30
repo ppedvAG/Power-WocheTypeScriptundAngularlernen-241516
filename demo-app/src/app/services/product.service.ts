@@ -1,11 +1,28 @@
 import { Injectable } from '@angular/core';
-import { Dish } from '../models/dish.model';
+import { HttpClient } from '@angular/common/http';
+import { Course, Dish } from '../models/dish.model';
+import { MealType, Recipe } from '../models/recipe.model';
+import { map, Observable } from 'rxjs';
+
+const url = 'https://dummyjson.com/recipes?limit=8&skip=0';
+function toCourse(type: MealType[]): Course {
+  if (type.includes('Side Dish')) {
+    return 'sides';
+  }
+  if (type.includes('Dessert')) {
+    return 'desserts';
+  }
+  if (type.includes('Appetizer')) {
+    return 'starters';
+  }
+  return 'mains';
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  private readonly dishes: Dish[] = [
+  readonly dishes: Dish[] = [
     {
       title: 'Pizza',
       course: 'mains',
@@ -37,10 +54,24 @@ export class ProductService {
     },
   ];
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  getDishes(): Dish[] {
-    // Kopie des Arrays erstellen mit spread operator und erneuten Kapselung im Array
-    return [...this.dishes];
+  getDishes(): Observable<Dish[]> {
+    return this.http
+      .get<{ recipes: Recipe[] }>(url)
+      .pipe(map((r) => r.recipes.map(this.toDish)));
+  }
+
+  private toDish(recipe: Recipe): Dish {
+    const price = recipe.prepTimeMinutes * 0.1 + recipe.cookTimeMinutes * 0.3;
+
+    return {
+      title: recipe.name,
+      course: toCourse(recipe.mealType),
+      imagePath: recipe.image,
+      remarks: recipe.difficulty,
+      description: recipe.instructions.map((s) => `- ${s}`).join('\n'),
+      price,
+    };
   }
 }

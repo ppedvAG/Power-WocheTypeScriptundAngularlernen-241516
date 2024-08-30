@@ -1,7 +1,7 @@
 <div class="flex">
-  <ng-container *ngFor="let dish of dishes">
+  <ng-container *ngFor="let dish of dishes$ | async">
     <app-card [dish]="dish" (ordered)="addOrder($event)">
-      <img [src]="dish.imagePath" [alt]="dish.title" />
+      <img width="150" [src]="dish.imagePath" [alt]="dish.title" />
 
       <div *ngIf="dish.remarks !== undefined" remark class="remarks">
         {{ dish.remarks }}
